@@ -1,0 +1,56 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/robotmaster/catkin_ws/devel/include/**",
+        "/home/robotmaster/livox_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/robotmaster/catkin_ws/src/amr_hw_control/include/**",
+        "/home/robotmaster/catkin_ws/src/amr_navigator/include/**",
+        "/home/robotmaster/catkin_ws/src/ar_track_alvar/ar_track_alvar/include/**",
+        "/home/robotmaster/catkin_ws/src/diffbot/diffbot_base/include/**",
+        "/home/robotmaster/catkin_ws/src/fast_gicp/include/**",
+        "/home/robotmaster/catkin_ws/src/FAST_LIO/include/**",
+        "/home/robotmaster/catkin_ws/src/hdl_global_localization/include/**",
+        "/home/robotmaster/catkin_ws/src/hdl_graph_slam/include/**",
+        "/home/robotmaster/catkin_ws/src/hdl_localization/include/**",
+        "/home/robotmaster/catkin_ws/src/hdl_people_tracking/include/**",
+        "/home/robotmaster/catkin_ws/src/hector_slam/hector_geotiff/include/**",
+        "/home/robotmaster/catkin_ws/src/hector_slam/hector_map_tools/include/**",
+        "/home/robotmaster/catkin_ws/src/hector_slam/hector_mapping/include/**",
+        "/home/robotmaster/catkin_ws/src/hector_slam/hector_marker_drawing/include/**",
+        "/home/robotmaster/catkin_ws/src/icp_localization/include/**",
+        "/home/robotmaster/catkin_ws/src/imu_filter/include/**",
+        "/home/robotmaster/catkin_ws/src/LIO-SAM-MID360/include/**",
+        "/home/robotmaster/catkin_ws/src/livox_to_pointcloud2/include/**",
+        "/home/robotmaster/catkin_ws/src/mcl3d_ros/include/**",
+        "/home/robotmaster/catkin_ws/src/multiple-object-tracking-lidar/include/**",
+        "/home/robotmaster/catkin_ws/src/ndt_localizer/include/**",
+        "/home/robotmaster/catkin_ws/src/ndt_omp/include/**",
+        "/home/robotmaster/catkin_ws/src/om_modbus_master/include/**",
+        "/home/robotmaster/catkin_ws/src/point_cloud_transformer/include/**",
+        "/home/robotmaster/catkin_ws/src/pointcloud_filter/include/**",
+        "/home/robotmaster/catkin_ws/src/pointmatcher-ros/include/**",
+        "/home/robotmaster/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/robotmaster/catkin_ws/src/usb_camera/include/**",
+        "/home/robotmaster/catkin_ws/src/velodyne/velodyne_driver/include/**",
+        "/home/robotmaster/catkin_ws/src/velodyne/velodyne_laserscan/include/**",
+        "/home/robotmaster/catkin_ws/src/velodyne/velodyne_pcl/include/**",
+        "/home/robotmaster/catkin_ws/src/velodyne/velodyne_pointcloud/include/**",
+        "/home/robotmaster/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/include/**",
+        "/home/robotmaster/catkin_ws/src/cable_reel/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

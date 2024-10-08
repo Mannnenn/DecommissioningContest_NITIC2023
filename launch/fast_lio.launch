@@ -1,0 +1,57 @@
+
+<launch>
+
+  <include file="$(find livox_ros_driver2)/launch_ROS1/msg_MID360_multi.launch" />
+  <node name="merge_livox_msg" pkg="cable_reel" type="merge_livox_msg" output="screen"/>
+
+
+
+
+
+  <node name="livox_to_pointcloud2_139" pkg="livox_to_pointcloud2" type="livox_to_pointcloud2_node" output="screen">
+    <remap from="livox/lidar" to="livox/lidar_192_168_1_139"/>
+    <remap from="livox/points" to="livox/points_192_168_1_139"/>
+  </node>
+  <node pkg="point_cloud_transformer" type="point_cloud_transformer_node" name="point_cloud_transformer_node_139" output="screen">
+    <param name="input_point_cloud_topic_name"        value="/livox/points_192_168_1_139" />
+    <param name="output_point_cloud_topic_name"       value="/livox/aligned_192_168_1_139" />
+    <param name="output_point_cloud_parent_frame_id"  value="livox_points" />
+  </node>
+  <node name="livox_to_pointcloud2_147" pkg="livox_to_pointcloud2" type="livox_to_pointcloud2_node" output="screen">
+    <remap from="livox/lidar" to="livox/lidar_192_168_1_147"/>
+    <remap from="livox/points" to="livox/points_192_168_1_147"/>
+  </node>
+  <node pkg="point_cloud_transformer" type="point_cloud_transformer_node" name="point_cloud_transformer_node_147" output="screen">
+    <param name="input_point_cloud_topic_name"        value="/livox/points_192_168_1_147" />
+    <param name="output_point_cloud_topic_name"       value="/livox/aligned_192_168_1_147" />
+    <param name="output_point_cloud_parent_frame_id"  value="livox_points" />
+  </node>
+
+
+  <arg name="port" default="/dev/ttyACM0" />
+  <arg name="frame_id" default="imu_link" />
+  <node pkg="rt_usb_9axisimu_driver" type="rt_usb_9axisimu_driver" name="rt_usb_9axisimu_driver" required="true" output="screen">
+    <param name="port" value="$(arg port)" />
+    <param name="frame_id" value="$(arg frame_id)" />
+  </node>
+
+  <node name="imu_transformer" pkg="imu_transformer" type="imu_transformer_node" output="screen">
+      <remap from="imu_in/data" to="imu/data_raw"/>
+      <remap from="imu_out/data" to="imu/data"/>
+      <param name="target_frame" value="base_link"/>
+  </node>
+
+  <arg name="model" default="$(find cable_reel)/urdf/robot_model.urdf" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_livox" args="0 0 0  0.175 0 -1.57 base_link livox_frame" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="livox_points" args="10 0 0  -0.175 0 -1.57 base_link livox_points" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="imu_link" args="0 0 0  0 3.14 0 base_link imu_link" />
+
+
+
+  
+
+  <include file="$(find fast_lio)/launch/mapping_mid360_multi.launch" />
+
+
+</launch>

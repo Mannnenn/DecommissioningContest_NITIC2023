@@ -1,0 +1,125 @@
+<!-- ロボットの名前 -->
+<robot name="diff_drive_robot">
+  <!-- ロボットの基準とするベースリンク -->
+  <link name="base_link" />
+
+  <!-- ボディの作成 -->
+  <link name="frame">
+    <visual>
+      <geometry>
+        <cylinder radius="0.2" length="0.15" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="red">
+        <color rgba="1.0 0.0 0.0 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.0" />
+      <geometry>
+        <cylinder radius="0.2" length="0.15" />]
+      </geometry>
+    </collision>
+    <!--慣性-->
+    <inertial>
+      <mass value="1.0" />
+      <inertia ixx="0.011875000000000002" iyy="0.011875000000000002" izz="0.020000000000000004"
+        ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+
+  <!-- Lidar台の作成 -->
+  <link name="lidar_base">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.0" />
+      <geometry>
+        <box size="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+    <!--慣性-->
+    <inertial>
+      <mass value="0.15" />
+      <inertia ixx="0.25" iyy="0.25" izz="0.25" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+  <!-- Lidarの作成 -->
+  <link name="laser">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.05" />
+      </geometry>
+    </collision>
+    <!--慣性-->
+    <inertial>
+      <mass value="0.15" />
+      <inertia ixx="0.125" iyy="0.125" izz="0.188" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+  </link>
+
+  <!-- Lidarの作成 -->
+  <link name="body">
+    <visual>
+      <geometry>
+        <mesh filename="package://cable_reel/urdf/RoBoGPT_FullAssembly.STL"
+          scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin xyz="0.85 0.325 0" rpy="1.57  0 -1.57" />
+      <material name="purple">
+        <color rgba="1.0 0.0 1.0 1.0" />
+      </material>
+    </visual>
+  </link>
+
+  <link name="imu_link" />
+  <link name="livox_frame" />
+
+
+  <!-- ################# ジョイント設定 ################## -->
+
+  <joint name="body_link" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="body" />
+  </joint>
+
+	<joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0.15" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="frame" />
+ 	</joint>
+
+	<joint name="lidar_base_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.5" rpy="0 0 0" />
+    <parent link="frame" />
+    <child link="lidar_base" />
+	</joint>
+
+	<joint name="lidar_joint" type="fixed">
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <parent link="frame" />
+    <child link="laser" />
+	</joint>
+
+
+
+  <joint name="livox_joint" type="fixed">
+    <parent link="laser" />
+    <child link="livox_frame" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.6108 0.0" />
+  </joint>
+
+  <joint name="imu_joint" type="fixed">
+    <parent link="laser" />
+    <child link="imu_link" />
+    <origin xyz="0.0 0.1 0.0" rpy="0.0 3.14 0.0" />
+  </joint>
+
+
+
+
+
+
+</robot>

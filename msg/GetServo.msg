@@ -1,0 +1,7 @@
+int16 current_cable_reel
+int32 velocity_cable_reel
+int32 velocity_poler_center
+int32 velocity_poler_outer
+int32 position_cable_reel
+int32 position_poler_center
+int32 position_poler_outer
